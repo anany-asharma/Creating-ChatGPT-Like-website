@@ -11,12 +11,11 @@ CORS(app)
 model_name="facebook/blenderbot-400M-distill"
 
 # AutoModelForSeq2SeqLM allows us to interact with the chosen model
-# AutoTokenizer converts our input into tokens and passes it to language mode efficiently
 model=AutoModelForSeq2SeqLM.from_pretrained(model_name)
+# AutoTokenizer converts our input into tokens and passes it to language mode efficiently
 tokenizer=AutoTokenizer.from_pretrained(model_name)
 
-# keeping track of conversation history is important when interacting with a chatbot because 
-# chatbot refers previous conversation when generating output.
+# keeping track of conversation history is important when interacting with a chatbot because as chatbot refers previous conversation when generating output.
 conversation_history=[]
 
 @app.route('/',methods=['GET'])
@@ -35,7 +34,6 @@ def handle_prompt():
     history='\n'.join(conversation_history)
 
     # tokenization of user prompt and chat history
-    # tokenization is the process of conevrting text into numerical representation
     inputs=tokenizer.encode_plus(history,input_text,return_tensors="pt")
 
     # generate outputs from the model
