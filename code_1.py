@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import json
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-# download a template chatbot webpage and configure it to make requests to your backend server.
+
 app=Flask(__name__)
 CORS(app)
 
